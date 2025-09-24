@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class Rep Voting</title>
+        <link rel="stylesheet" href="voting.css">
+    </head>
+    <body>
+        <h1>VOTE NOW</h1>
+        <form onsubmit="handleFormSubmit(event)">
+            <label>Student Name:</label>
+            <input type="text" placeholder="eg: Ram" id="studentName">
+            <select name="classReps" id="classReps">
+                <option value="rohan">Rohan</option>
+                <option value="tyan">Tyan</option>
+                <option value="sara">Sara</option>
+            </select>
+            <button type="submit">VOTE</button>
+        </form>
+        <div>
+            <h2>Rohan</h2>
+            <p id="rohan_count">Total Count:</p>
+            <ul id="rohan_votes"></ul>
+        </div>
+        <div>
+            <h2>Tyan</h2>
+            <p id="tyan_count">Total Count:</p>
+            <ul id="tyan_votes"></ul>
+        </div>
+        <div>
+            <h2>Sara</h2>
+            <p id="sara_count">Total Count:</p>
+            <ul id="sara_votes"></ul>
+        </div>
+    </body>
+    <script src="voting-script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</html>
