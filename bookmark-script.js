@@ -28,12 +28,19 @@ function display(data) {
     const li = document.createElement('li');
     const delBtn = document.createElement('button');
     const edtBtn = document.createElement('button');
-    li.textContent = "Name: "+data.name + ", Url: " + data.url;
+    const link = document.createElement('a')
+    const beak = document.createElement('br')
+    link.href=data.url;
+    link.textContent = 'Visit';
+    link.setAttribute('target', '_blank');
+    li.textContent = "Name: "+data.name + ", Url: ";
     delBtn.textContent = 'Delete'
     edtBtn.textContent = 'Edit'
     delBtn.addEventListener('click', () => deleteData(li,data._id));
     edtBtn.addEventListener('click', () => editData(li, data));
 
+    li.appendChild(link)
+    li.appendChild(beak)
     li.appendChild(delBtn)
     li.appendChild(edtBtn)
 
