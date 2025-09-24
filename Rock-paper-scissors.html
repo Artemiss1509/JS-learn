@@ -5,34 +5,59 @@
     </head>
     <body>
         <p>Rock Paper Scissors</p>
-        <button onclick="let randomNumber = Math.random(); let computerMove = pickComputerMove(randomNumber);
-        if (computerMove === 'Rock'){
-            alert('You picked Rock and the compter picked Rock. It is a tie!');
-        } else if (computerMove === 'Paper'){
-            alert('You picked Rock and the compter picked Paper. You lose!');
-        } else {
-            alert('You picked Rock and the compter picked Scissors. You win!');
-        }
-        ">Rock</button>
-        <button onclick="randomNumber = Math.random(); computerMove = pickComputerMove(randomNumber);
-        if (computerMove === 'Rock'){
-            alert('You picked Paper and the compter picked Rock. You win!');
-        } else if (computerMove === 'Paper'){
-            alert('You picked Paper and the compter picked Paper. It is a tie!');
-        } else {
-            alert('You picked Paper and the compter picked Scissors. You lose!');
-        }
-        ">Paper</button>
-        <button onclick="randomNumber = Math.random(); computerMove = pickComputerMove(randomNumber);
-        if (computerMove === 'Rock'){
-            alert('You picked Scissors and the compter picked Rock. You lose!');
-        } else if (computerMove === 'Paper'){
-            alert('You picked Scissors and the compter picked Paper. You win!');
-        } else {
-            alert('You picked Scissors and the compter picked Scissors. It is a tie!');
-        }
-        ">Scissors</button>
+        <button onclick="playGame('Rock');">Rock</button>
+        <button onclick="playGame('Paper');">Paper</button>
+        <button onclick="playGame('Scissors');">Scissors</button>
+    <button onclick="score.wins = 0; score.losses = 0; score.ties = 0;localStorage.removeItem('score')">Reset Game</button>
         <script>
+            let score = JSON.parse(localStorage.getItem('score'))|| { wins : 0, losses : 0, ties : 0 }
+            function keepScore(result) {
+                if (result === 'You win!'){
+                    score.wins++;
+                } else if (result === 'You lose!'){
+                    score.losses++;
+                } else if (result === 'It is a tie!'){
+                    score.ties++;
+                }
+                console.log(`Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+            }
+            function playGame(playerMove){
+                let randomNumber = Math.random(); 
+                let computerMove = pickComputerMove(randomNumber);
+                let result = '';
+                if (playerMove === 'Rock'){
+                    if (computerMove === 'Rock'){
+                        result = 'It is a tie!';
+                    } else if (computerMove === 'Paper'){
+                        result = 'You lose!';
+                    } else {
+                        result = 'You win!';
+                    }
+                }
+                else if (playerMove === 'Paper'){
+                    if (computerMove === 'Rock'){
+                        result = 'You win!';
+                    } else if (computerMove === 'Paper'){
+                        result = 'It is a tie!';
+                    } else {
+                        result = 'You lose!';
+                    }
+                }
+                else if (playerMove === 'Scissors'){
+                    if (computerMove === 'Rock'){
+                        result = 'You lose!';
+                    } else if (computerMove === 'Paper'){
+                        result = 'You win!';
+                    } else {
+                        result = 'It is a tie!';
+                    }
+                }
+                keepScore(result);
+                localStorage.setItem('score', JSON.stringify(score));
+
+                alert(`You picked ${playerMove} and the compter picked ${computerMove}. ${result}
+                Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
+            }
             function pickComputerMove(number) {
                 if(number>=0 && number<1/3) {
                     return "Rock"

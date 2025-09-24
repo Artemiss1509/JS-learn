@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bookmark Manager</title>
+    </head>
+    <body>
+        <h1>Bookmark Manager</h1>
+        <form onsubmit="handleFormSubmit(event)">
+            <input type="text" placeholder="Name" id="name">
+            <input type="url" placeholder="Url" id="url">
+            <button type="submit">Add</button>
+        </form>
+        <ul>
+            <h2>Bookmarks</h2>
+        </ul>
+
+    </body>
+    <script src="bookmark-script.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</html>

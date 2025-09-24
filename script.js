@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", initialize);
 
-    // Don't remove anything just complete the functions
-
-    // When the page get load display all users
 function initialize() {
     const usersList = JSON.parse(localStorage.getItem('usersList')) || [];
     for (let i = 0; i < usersList.length; i++){
@@ -11,7 +8,6 @@ function initialize() {
 
     }
 
-    // add new users in usersList array
 function handleFormSubmit(event) {
     event.preventDefault();
     const expenseName = event.target.expenseName.value;
@@ -34,7 +30,6 @@ function handleFormSubmit(event) {
 
     }
 
-    // use this function to display expenses on screen
 function display(data) {
     const ul = document.querySelector('ul');
     const li = document.createElement('li');
@@ -53,7 +48,6 @@ function display(data) {
     
     }
 
-    // use this function to edit user details
 function editData(li, data) {
     document.getElementById('expenseName').value = data.expenseName;
     document.getElementById('expenseAmount').value = data.expenseAmount;
@@ -61,8 +55,6 @@ function editData(li, data) {
     deleteData(li, data.id);
 }
 
-
-    // use this function to delete the user details from local store and DOM (screen)
 function deleteData(li, id) {
     const usersList = JSON.parse(localStorage.getItem('usersList')) || [];
     const newList = [];
