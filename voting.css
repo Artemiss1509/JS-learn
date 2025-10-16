@@ -47,8 +47,7 @@ select {
 }
 
 input[type="text"]:focus,
-select:focus,
-button:focus {
+select:focus {
   outline: 2px solid #93c5fd;
   outline-offset: 1px;
 }
