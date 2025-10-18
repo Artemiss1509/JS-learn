@@ -4,15 +4,36 @@ const app = express()
 
 app.use(express.json())
 
-
-
-app.get('/welcome/:username',(req,res)=>{
-    res.setHeader('Content-Type','text/html')
-    const name = req.params.username
-    const role = req.query.role
-
-    res.end(`<h1> Welcome ${name}! You are a ${role} </h1>`)
+app.use((req,res,next)=>{
+    console.log(req.method,req.url)
+    next()
 })
+
+app.get('/products',(req,res)=>{
+    res.setHeader('Content-Type','text/html')
+    
+
+    res.end(`<h1> Here is the list of all products. </h1>`)
+})
+
+app.post('/products',(req,res)=>{
+    const products = 'A new product has been added.'
+    res.json(products)
+})
+
+
+app.get('/categories',(req,res)=>{
+    res.setHeader('Content-Type','text/html')
+    
+
+    res.end(`<h1> Here is the list of all categories. </h1>`)
+})
+
+app.post('/categories',(req,res)=>{
+    const categories = 'A new category has been created.'
+    res.json(categories)
+})
+
 
 
 app.use((req,res,next)=>{
@@ -21,6 +42,6 @@ app.use((req,res,next)=>{
 })
 
 
-app.listen(3000,()=>{
-    console.log("Server is running on http://localhost:3000")
+app.listen(4000,()=>{
+    console.log("Server is running on http://localhost:4000")
 })
