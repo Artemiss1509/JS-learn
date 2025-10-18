@@ -1,9 +1,14 @@
 const express = require('express')
 const app = express()
 
-const booksRouter = require('./routes/book')
+const studentsRouter = require('./routes/students')
+const coursesRouter = require('./routes/course')
+const homeRouter = require('./routes/home')
 
-app.use('/books',booksRouter)
+
+app.use('/',homeRouter)
+app.use('/students',studentsRouter)
+app.use('/course',coursesRouter)
 
 
 
