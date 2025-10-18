@@ -1,15 +1,9 @@
 const express = require('express')
 const app = express()
 
-const productRouter = require('./routes/products')
-const categoryRouter = require('./routes/categories')
+const booksRouter = require('./routes/book')
 
-app.use((req,res,next)=>{
-    console.log(req.method,req.url)
-    next()
-})
-app.use('/products',productRouter)
-app.use('/categories',categoryRouter)
+app.use('/books',booksRouter)
 
 
 
