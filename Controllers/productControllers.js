@@ -1,14 +1,16 @@
+const productService = require('../Services/productService')
+
+
+
 const productController = (req,res)=>{
-    res.setHeader('Content-Type','text/html')
-    res.end('Fetching all products')
+    productService(req,res,'Fetching all products')
 }
 
 const productController2 = (req,res)=>{
-    res.setHeader('Content-Type','text/html')
-    res.end('Fetching product with id: '+req.params.id)
+    productService(req,res,'Fetching product with id: '+req.params.id)
 }
 const productController3 = (req,res)=>{
-    res.send('Adding a new product')
+    productService(req,res,'Adding a new product')
 }
 
 module.exports = {
