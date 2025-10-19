@@ -1,14 +1,13 @@
 const express = require('express')
 const app = express()
 
-const studentsRouter = require('./routes/students')
-const coursesRouter = require('./routes/course')
-const homeRouter = require('./routes/home')
+const userRoutes = require('./routes/userRoutes')
+const productRoutes = require('./routes/productRoutes')
+const cartRoutes = require('./routes/cartRoutes')
 
-
-app.use('/',homeRouter)
-app.use('/students',studentsRouter)
-app.use('/course',coursesRouter)
+app.use('/users',userRoutes)
+app.use('/products',productRoutes)
+app.use('/carts',cartRoutes)
 
 
 
