@@ -1,5 +1,7 @@
 const productService = require('../Services/productService')
 const path = require('path')
+const postError = require('../util/centralError')
+
 
 
 
@@ -14,6 +16,9 @@ const productController2 = (req,res)=>{
 const productController3 = (req,res)=>{
     const data = req.body
     console.log(data)
+    if(!data){
+        return postError(res,data,400)
+    }
     res.json(data)
 }
 
