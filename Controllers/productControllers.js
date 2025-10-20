@@ -12,7 +12,9 @@ const productController2 = (req,res)=>{
     productService(req,res,'Fetching product with id: '+req.params.id)
 }
 const productController3 = (req,res)=>{
-    productService(req,res,'Adding a new product')
+    const data = req.body
+    console.log(data)
+    res.json(data)
 }
 
 module.exports = {

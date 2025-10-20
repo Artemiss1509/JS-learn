@@ -4,11 +4,14 @@
         <title>Products</title>
     </head>
     <body>
-        <form>
+        <form onsubmit="handleFormSubmit(event)">
             <label for="product">Product Name</label>
             <input type="text" id="product" name="productName">
             <button type="submit">Add Product</button>
 
         </form>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="/productForm.js"></script>
+    
 </html>
