@@ -1,9 +1,11 @@
 const productService = require('../Services/productService')
+const path = require('path')
+
 
 
 
 const productController = (req,res)=>{
-    productService(req,res,'Fetching all products')
+    res.sendFile(path.join(__dirname,'../view/product.html'))
 }
 
 const productController2 = (req,res)=>{
