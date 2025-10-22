@@ -1,6 +1,35 @@
 const express = require('express')
+const mysql = require('mysql2')
 const app = express()
 
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password:'Artemiss1509',
+    database:'testDB'
+})
+
+connection.connect((err)=>{
+    if(err){
+        console.log(err)
+        return;
+    }
+    console.log('Connected to database');
+
+    const creationQuery = `create table Students (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL
+    )`
+    connection.execute(creationQuery,(err)=>{
+        if(err){
+            console.log(err)
+            connection.end()
+            return;
+        }
+        console.log('Table created');
+    })
+})
 app.use(express.json())
 
 app.use(express.static('Public'))
